@@ -28,7 +28,6 @@ function curve(arr, amount) {
 
 var grades = [77, 73, 74, 81, 90];
 curve(grades, 5);
-
 // print(grades);
 
 function showScope() {
@@ -58,7 +57,7 @@ function withdraw(amount) {
         this.balance -= amount;
     }
     if (amount > this.balance) {
-        print("Insufficient funds");
+        console.log("Insufficient funds");
     }
 }
 
@@ -278,13 +277,13 @@ for (var i = 0; i < movies.length; ++i) {
 }
 
 function displayList(list) {
-    for (list.front(); list.currPos() < list.length(); ++list) {
-        if (list.getElement() instanceof Customer) {
-            util.print(list.getElement()["name"] + ", " +
-                       list.getElement()["movie"]);
+    for (list.front; list.currPos < list.length; ++list) {
+        if (list.getElement instanceof Customer) {
+            console.log(list.getElement["name"] + ", " +
+                       list.getElement["movie"]);
         }
         else {
-            util.print(list.getElement());
+            console.log(list.getElement);
         }
     }
 }
