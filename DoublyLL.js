@@ -9,5 +9,5 @@ function insert(newElement, item) {
     var current = this.find(item);
     newNode.next = current.next;
     newNode.previous = current;
-    current.next = newNode;
+    current.next = newNode; 
 }

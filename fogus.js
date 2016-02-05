@@ -114,3 +114,143 @@ function lameCSV(str) {
 var peopleTable = lameCSV("name,age,hair\nMerble,35,red\nBob,64,blonde");
 
 peopleTable;
+_.rest(peopleTable).sort();
+
+function selectNames(table) {
+    return _.rest(_.map(table, _.first));
+}
+
+function selectAges(table) {
+    return _.rest(_.map(table, second));
+}
+
+function selectHairColor(table) {
+    return _.rest(_.map(table, function(row) {
+        return nth(row, 2);
+    }));
+}
+
+var mergeResults = _.zip;
+
+selectNames(peopleTable)
+selectAges(peopleTable)
+selectHairColor(peopleTable)
+
+mergeResults(selectNames(peopleTable), selectAges(peopleTable))
+
+
+//
+
+function existy(x) {
+    return x != null;
+}
+
+existy(null)
+existy(undefined)
+existy({}.notHere)
+existy((function() {})())
+existy(0)
+existy(false)
+
+function truthy(x) {
+    return (x !== false) && existy(x);
+}
+
+truthy(false)
+truthy(undefined)
+truthy(0)
+truthy('')
+
+function doWhen(cond, action) {
+    if (truthy(cond))
+        return action();
+    else
+        return undefined;
+}
+
+function executeIfHasField(target, name) {
+    return doWhen(existy(target[name]), function() {
+        var result = _.result(target, name);
+        console.log(['The result is', result].join(' '));
+        return result;
+    });
+}
+
+executeIfHasField([1, 2, 3], 'reverse');
+executeIfHasField({
+    foo: 42
+}, 'foo');
+executeIfHasField([1, 2, 3], 'notHere');
+
+[null, undefined, 1, 2, false].map(existy);
+[null, undefined, 1, 2, false].map(truthy);
+
+var fortytwo = function() {
+    return 42
+}
+fortytwo();
+
+function weirdAdd(n, f) {
+    return n + f()
+};
+weirdAdd(42, function() {
+    return 9
+});
+
+_.each(['whiskey', 'tango', 'foxtrot'], function(word) {
+    console.log(word.charAt(0).toUpperCase() + word.substr(1));
+});
+
+var lyrics = [];
+
+for (var bottles = 99; bottles > 0; bottles--) {
+    lyrics.push(bottles + " bottles of beer on the wall");
+    lyrics.push(bottles + " bottles of beer");
+    lyrics.push("Take one down, pass it around");
+
+    if (bottles > 1) {
+        lyrics.push((bottles - 1) + " bottles of beer on the wall.");
+    } else {
+        lyrics.push("No more bottles of beer on the wall!");
+    }
+}
+
+function lyricSegment(n) {
+    return _.chain([])
+        .push(n + " bottles of beer on the wall")
+        .push(n + " bottles of beer")
+        .push("Take one down, pass it around")
+        .tap(function(lyrics) {
+            if (n > 1)
+                lyrics.push((n - 1) + " bottles of beer on the wall.");
+            else
+                lyrics.push("No more bottles of beer on the wall!");
+        })
+
+    .value();
+}
+
+lyricSegment(9);
+
+function song(start, end, lyricGen) {
+    return _.reduce(_.range(start, end, -1),
+        function(acc, n) {
+            return acc.concat(lyricGen(n));
+        }, []);
+}
+
+song(99, 0, lyricSegment);
+
+function Point2D(x, y) {
+  this._x = x;
+  this._y = y;
+}
+
+new Point2D(0,1);
+
+function Point3D(x, y, z) {
+  Point2D.call(this, x, y);
+  this._z = z;
+}
+
+new Point3D(10, -1, 100);
