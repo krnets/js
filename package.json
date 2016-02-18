@@ -1,0 +1,27 @@
+{
+  "name": "js",
+  "version": "0.1.0",
+  "description": "JS practice files",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krnets/js.git"
+  },
+  "keywords": [
+    "JS",
+    "practice",
+    "files"
+  ],
+  "author": "CK",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/krnets/js/issues"
+  },
+  "homepage": "https://github.com/krnets/js#readme",
+  "dependencies": {
+    "babel-core": "^6.5.2"
+  }
+}
