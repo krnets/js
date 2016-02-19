@@ -101,3 +101,111 @@ var people = [{
 _.sortBy(people, function(p) {
   return p.age
 });
+
+function existy(x) {
+  return x != null;
+}
+
+function truthy(x) {
+  return (x !== false) && existy(x);
+}
+
+
+// ..
+
+function cat() {
+  var head = _.first(arguments);
+  if (existy(head))
+    return head.concat.apply(head, _.rest(arguments));
+  else
+    return []
+}
+
+cat([1, 2, 3], [4, 5], [6, 7, 8])
+
+function construct(head, tail) {
+  return cat([head], _.toArray(tail));
+}
+
+construct(42, [1, 2, 3])
+
+function mapcat(fun, coll) {
+  return cat.apply(null, _.map(coll, fun));
+}
+
+mapcat(function(e) {
+  return construct(e, [","]);
+}, [1, 2, 3])
+
+
+function butLast(coll) {
+  return _.toArray(coll).slice(0, -1)
+}
+
+function interpose(inter, coll) {
+  return butLast(mapcat(function(e) {
+      return construct(e, [inter])
+    },
+    coll))
+}
+
+interpose(",", [1, 2, 3])
+
+var zombie = {
+  name: "Bub",
+  film: "Day of the Dead"
+}
+
+_.keys(zombie)
+_.values(zombie)
+
+_.pluck([{
+    title: "Chton",
+    author: "Anthony"
+  }, {
+    title: "Grendel",
+    author: "Gardner"
+  }, {
+    title: "After Dark"
+  }],
+  'author');
+
+_.pairs(zombie)
+
+_.object(_.map(_.pairs(zombie), function(pair) {
+  return [pair[0].toUpperCase(), pair[1]]
+}))
+
+_.invert(zombie)
+
+_.keys(_.invert({
+  a: 138,
+  b: 9
+}))
+
+_.pluck(_.map([{
+    title: "Chton",
+    author: "Anthony"
+  }, {
+    title: "Grendel",
+    author: "Gardner"
+  }, {
+    title: "After Dark"
+  }],
+  function(obj) {
+    return _.defaults(obj, {
+      author: "Unknown"
+    })
+  }), 'author')
+
+
+var person = {
+  name: "Romy",
+  token: "j3983ij",
+  pswd: "tigress"
+}
+
+var info = _.omit(person, 'token', 'pswd')
+info
+var creds = _.pick(person, 'token', 'pswd')
+creds

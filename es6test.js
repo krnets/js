@@ -57,3 +57,11 @@ function fibo(n) {
 }
 
 fibo(11)
+
+const gods = [{
+  name: 'Douglas Crockford'
+}, {
+  name: 'Guido van Rossum'
+}, {
+  name: 'Raffaele Esposito'
+}, ];
