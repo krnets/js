@@ -10,6 +10,7 @@ var arr1 = [0, 1, 2]
 var arr2 = [3, 4, 5]
 arr1.push(...arr2)
 arr1;
+var arr3 = [9, 3, false, '', 7, 1, false, 5, null, 0]
 
 var s = new Set()
 s.add('hello').add('goodbye').add('hello')

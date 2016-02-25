@@ -1,17 +1,17 @@
 function buildFunctions() {
 
-    var arr = [];
+  var arr = [];
 
-    for (var i = 0; i < 3; i++) {
+  for (var i = 0; i < 3; i++) {
 
-        arr.push(
-            function() {
-                console.log(i);
-            }
-        )
-    }
+    arr.push(
+      function() {
+        console.log(i);
+      }
+    )
+  }
 
-    return arr;
+  return arr;
 
 }
 
@@ -20,3 +20,10 @@ var fs = buildFunctions();
 fs[0]();
 fs[1]();
 fs[2]();
+
+
+(() => {
+  let x = 5
+  x = 7
+  return x
+})()
