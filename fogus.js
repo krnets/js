@@ -7,7 +7,7 @@ function splat(fun) {
 }
 
 var addArrayElements = splat(function(x, y) {
-  return x + y
+  return x + y;
 });
 
 addArrayElements([1, 2]);
@@ -19,16 +19,16 @@ function unsplat(fun) {
 }
 
 var joinElements = unsplat(function(array) {
-  return array.join(' ')
+  return array.join(' ');
 });
 
 joinElements('a', 'b');
 
 function parseAge(age) {
-  if (!_.isString(age)) fail("Expecting a string");
+  if (!_.isString(age)) fail('Expecting a string');
   var a;
 
-  note("Attempting to parse an age");
+  note('Attempting to parse an age');
   a = parseInt(age, 10);
 
   if (!_.isNaN(a)) {
@@ -49,7 +49,7 @@ function warn(str) {
 
 function note() {}
 
-parseAge("42");
+parseAge('42');
 
 var letters = ['a', 'b', 'c'];
 letters[1];
@@ -66,10 +66,10 @@ function isIndexed(data) {
 }
 
 function nth(a, index) {
-  if (!_.isNumber(index)) fail("Expected a number as the index");
-  if (!isIndexed(a)) fail("Not supported on non-indexed type");
+  if (!_.isNumber(index)) fail('Expected a number as the index');
+  if (!isIndexed(a)) fail('Not supported on non-indexed type');
   if ((index < 0) || (index > a.length - 1))
-    fail("Index value is out of bounds");
+    fail('Index value is out of bounds');
 
   return a[index];
 }

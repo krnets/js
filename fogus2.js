@@ -4,7 +4,7 @@ var nums = [1, 2, 3, 4, 5];
 
 function doubleAll(array) {
   return _.map(array, function(n) {
-    return n * 2
+    return n * 2;
   });
 }
 
@@ -12,7 +12,7 @@ doubleAll(nums);
 
 function average(array) {
   var sum = _.reduce(array, function(a, b) {
-    return a + b
+    return a + b;
   });
   return sum / _.size(array);
 }
@@ -22,7 +22,7 @@ average(nums);
 function onlyEven(array) {
   return _.filter(array, function(n) {
     return (n % 2) === 0;
-  })
+  });
 }
 
 onlyEven(nums);
@@ -44,7 +44,7 @@ _.map({
 var nums = [100, 2, 25];
 
 function div(x, y) {
-  return x / y
+  return x / y;
 }
 
 _.reduce(nums, div);
@@ -54,7 +54,7 @@ _.reduceRight(nums, div);
 function allOf() {
   return _.reduceRight(arguments, function(truth, f) {
     return truth && f();
-  }, true)
+  }, true);
 }
 
 function anyOf() {
@@ -64,11 +64,11 @@ function anyOf() {
 }
 
 function T() {
-  return true
+  return true;
 }
 
 function F() {
-  return false
+  return false;
 }
 
 allOf();
@@ -96,36 +96,36 @@ _.any([1, 2, 'c', 4], _.isString);
 _.all([1, 2, 3, 4], _.isString);
 
 var people = [{
-  name: "Rick",
+  name: 'Rick',
   age: 30
 }, {
-  name: "Jaka",
+  name: 'Jaka',
   age: 24
 }];
 
 _.sortBy(people, function(p) {
-  return p.age
+  return p.age;
 });
 
 var
   albums = [{
-    title: "Sabbath Bloody Sabbath",
-    genre: "Metal"
+    title: 'Sabbath Bloody Sabbath',
+    genre: 'Metal'
   }, {
-    title: "Scientist",
-    genre: "Dub"
+    title: 'Scientist',
+    genre: 'Dub'
   }, {
-    title: "Undertow",
-    genre: "Metal"
+    title: 'Undertow',
+    genre: 'Metal'
   }];
 
 _.groupBy(albums, function(a) {
-  return a.genre
-})
+  return a.genre;
+});
 
 _.countBy(albums, function(a) {
-  return a.genre
-})
+  return a.genre;
+});
 
 
 function existy(x) {
@@ -144,7 +144,7 @@ function cat() {
   if (existy(head))
     return head.concat.apply(head, _.rest(arguments));
   else
-    return []
+    return [];
 }
 
 cat([1, 2, 3], [4, 5], [6, 7, 8]);
@@ -154,7 +154,7 @@ function construct(head, tail) {
   return cat([head], _.toArray(tail));
 }
 
-construct(42, [1, 2, 3])
+construct(42, [1, 2, 3]);
 
 
 function mapcat(fun, coll) {
@@ -162,149 +162,180 @@ function mapcat(fun, coll) {
 }
 
 mapcat(function(e) {
-  return construct(e, [","]);
-}, [1, 2, 3])
+  return construct(e, [',']);
+}, [1, 2, 3]);
 
 
 function butLast(coll) {
-  return _.toArray(coll).slice(0, -1)
+  return _.toArray(coll).slice(0, -1);
 }
 
-butLast([1, 2, 3, 4, 5])
+butLast([1, 2, 3, 4, 5]);
 
 function interpose(inter, coll) {
   return butLast(mapcat(function(e) {
-      return construct(e, [inter])
+      return construct(e, [inter]);
     },
-    coll))
+    coll));
 }
 
-interpose("^", [1, 2, 3])
+interpose('^', [1, 2, 3]);
 
 var zombie = {
-  name: "Bub",
-  film: "Day of the Dead"
-}
+  name: 'Bub',
+  film: 'Day of the Dead'
+};
 
-_.keys(zombie)
-_.values(zombie)
+_.keys(zombie);
+_.values(zombie);
 
 _.pluck([{
-    title: "Chton",
-    author: "Anthony"
+    title: 'Chton',
+    author: 'Anthony'
   }, {
-    title: "Grendel",
-    author: "Gardner"
+    title: 'Grendel',
+    author: 'Gardner'
   }, {
-    title: "After Dark"
+    title: 'After Dark'
   }],
   'author');
 
-_.pairs(zombie)
+_.pairs(zombie);
 
 _.object(_.map(_.pairs(zombie), function(pair) {
-  return [pair[0].toUpperCase(), pair[1]]
-}))
+  return [pair[0].toUpperCase(), pair[1]];
+}));
 
-_.invert(zombie)
+_.invert(zombie);
 
 _.keys(_.invert({
   a: 138,
   b: 9
-}))
+}));
 
 _.pluck(_.map([{
-    title: "Chton",
-    author: "Anthony"
+    title: 'Chton',
+    author: 'Anthony'
   }, {
-    title: "Grendel",
-    author: "Gardner"
+    title: 'Grendel',
+    author: 'Gardner'
   }, {
-    title: "After Dark"
+    title: 'After Dark'
   }],
   function(obj) {
     return _.defaults(obj, {
-      author: "Unknown"
-    })
-  }), 'author')
+      author: 'Unknown'
+    });
+  }), 'author');
 
 
 var person = {
-  name: "Romy",
-  token: "j3983ij",
-  pswd: "tigress"
-}
+  name: 'Romy',
+  token: 'j3983ij',
+  pswd: 'tigress'
+};
 
-var info = _.omit(person, 'token', 'pswd')
-info
-var creds = _.pick(person, 'token', 'pswd')
-creds
+var info = _.omit(person, 'token', 'pswd');
+info;
+var creds = _.pick(person, 'token', 'pswd');
+creds;
 
 
 
 var
   library = [{
-    title: "SICP",
-    isbn: "0262010771",
+    title: 'SICP',
+    isbn: '0262010771',
     ed: 1
   }, {
-    title: "SICP",
-    isbn: "0262510871",
+    title: 'SICP',
+    isbn: '0262510871',
     ed: 2
   }, {
-    title: "Joy of Clojure",
-    isbn: "1935182641",
+    title: 'Joy of Clojure',
+    isbn: '1935182641',
     ed: 1
   }];
 
 _.findWhere(
   library, {
-    title: "SICP",
+    title: 'SICP',
     ed: 2
   });
 
 _.where(library, {
-  title: "SICP"
-})
+  title: 'SICP'
+});
 
 
-function plucker(FIELD) {
-  return function(obj) {
-    return (obj && obj[FIELD])
-  }
+_.pluck(library, 'title');
+
+function project(table, keys) {
+  return _.map(table, function(obj) {
+    return _.pick.apply(null, construct(obj, keys));
+  });
 }
 
+var editionResults = project(library, ['title', 'isbn']);
+editionResults;
+
+var isbnResults = project(editionResults, ['isbn']);
+isbnResults;
 
 
+_.pluck(isbnResults, 'isbn');
 
+function rename(obj, newNames) {
+  return _.reduce(newNames, function(o, nu, old) {
+      if (_.has(obj, old)) {
+        o[nu] = obj[old];
+        return o;
+      } else
+        return o;
+    },
+    _.omit.apply(null, construct(obj, _.keys(newNames))));
+}
 
-
-_.max([1, 2, 3, 4, 5])
-
-var people = [{
-  name: "Fred",
-  age: 65
+rename({
+  a: 1,
+  b: 2
 }, {
-  name: "Lucy",
-  age: 36
-}]
+  'a': 'AAA'
+});
 
-_.max(people, function(p) {
-  return p.age
-})
-
-
-function finder(valueFun, bestFun, coll) {
-  return _.reduce(coll, function(best, current) {
-    var bestValue = valueFun(best)
-    var currentValue = valueFun(current)
-
-    return (bestValue === bestFun(bestValue, currentValue)) ?
-      best : current
-  })
+function as(table, newNames) {
+  return _.map(table, function(obj) {
+    return rename(obj, newNames);
+  });
 }
 
-finder(_.identity, Math.max, [1, 2, 3, 4, 5])
+as(library, {
+  ed: 'edition'
+});
+
+project(as(library, {
+  ed: 'edition'
+}), ['edition']);
+
+function restrict(table, pred) {
+  return _.reduce(table, function(newTable, obj) {
+    if (truthy(pred(obj)))
+      return newTable;
+    else
+      return _.without(newTable, obj);
+  }, table);
+}
+
+restrict(library, function(book) {
+  return book.ed > 1;
+});
 
 
-finder(plucker('age'), Math.max, people)
+restrict(
+  project(
+    as(library, {
+      ed: 'edition'
+    }), ['title', 'isbn', 'edition']),
+  function(book) {
+    return book.edition > 1;
+  });
