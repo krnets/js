@@ -14,7 +14,6 @@ function dispatch(/* funs */ ) {
 
       if (existy(ret)) return ret;
     }
-
     return ret;
   }
 }
@@ -328,8 +327,8 @@ function sqr(n) {
 }
 
 sqr(10);
-  // sqr(0)
-  // sqr('')
+// sqr(0)
+// sqr('')
 
 function condition1(/* validators */ ) {
   var validators = _.toArray(arguments);
@@ -352,8 +351,8 @@ var sqrPre = condition1(
 );
 
 sqrPre(_.identity, 10);
-  // sqrPre(_.identity, '')
-  // sqrPre(_.identity, 0)
+// sqrPre(_.identity, '')
+// sqrPre(_.identity, 0)
 
 function uncheckedSqr(n) {
   return n * n;
@@ -367,8 +366,8 @@ uncheckedSqr('');
 
 var checkedSqr = partial1(sqrPre, uncheckedSqr);
 checkedSqr(10);
-  // checkedSqr(0)
-  // checkedSqr('')
+// checkedSqr(0)
+// checkedSqr('')
 
 var createCommand = partial(validateCommand, _.identity);
 
